@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/mcrd25/backend-playground/issues"
   },
-  "homepage": "https://github.com/mcrd25/backend-playground#readme"
+  "homepage": "https://github.com/mcrd25/backend-playground#readme",
+  "dependencies": {
+    "restify": "^8.5.1"
+  }
 }
