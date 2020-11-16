@@ -1,7 +1,15 @@
 import { success, failure} from '../helpers/response.js';
 
-let users = {};
-let max_user_id = 0;
+let users = {
+	1: {
+		'id': 1,
+		'firstName': 'Maya',
+		'lastName': 'Douglas',
+		'email': 'me@mayacdouglas.com'
+	}
+	
+};
+let max_user_id = 1;
 
 const userController = (server) => {
 	
@@ -10,7 +18,7 @@ const userController = (server) => {
 	});
 
 	server.get('/user/:id', (req, res, next) => {
-		if (typeof(users[req.param.id]) === 'undefined') {
+		if (typeof(users[req.params.id]) === 'undefined') {
 			failure(res, next, 404, 'User not found')
 		}
 		success(res, next, users[parseInt(req.params.id)])
@@ -25,6 +33,9 @@ const userController = (server) => {
 	});
 
 	server.put('/user/:id', (req, res, next) => {
+		if (typeof(users[req.params.id]) === 'undefined') {
+			failure(res, next, 404, 'User not found')
+		}
 		let user = users[parseInt(req.params.id)];
 		let updates = req.params;
 		for (let attr in updates) {
@@ -34,6 +45,9 @@ const userController = (server) => {
 	});
 
 	server.del('/user/:id', (req, res, next) => {
+		if (typeof(users[req.params.id]) === 'undefined') {
+			failure(res, next, 404, 'User not found')
+		}
 		const data = delete users[parseInt(req.params.id)];
 		success(res, next, data);
 	});
