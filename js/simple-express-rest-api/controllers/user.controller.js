@@ -18,6 +18,11 @@ const userController = (server) => {
 	});
 
 	server.get('/user/:id', (req, res, next) => {
+		req.assert('id', 'Id paramater is required and must be numeric.').notEmpty().isInt();
+		const errors = req.validationErrors();
+		if (errors) {
+			failure(res, next, 400, errors[0]);
+		}
 		if (typeof(users[req.params.id]) === 'undefined') {
 			failure(res, next, 404, 'User not found')
 		}
@@ -33,6 +38,11 @@ const userController = (server) => {
 	});
 
 	server.put('/user/:id', (req, res, next) => {
+		req.assert('id', 'Id paramater is required and must be numeric.').notEmpty().isInt();
+		const errors = req.validationErrors();
+		if (errors) {
+			failure(res, next, 400, errors[0]);
+		}
 		if (typeof(users[req.params.id]) === 'undefined') {
 			failure(res, next, 404, 'User not found')
 		}
@@ -45,6 +55,11 @@ const userController = (server) => {
 	});
 
 	server.del('/user/:id', (req, res, next) => {
+		req.assert('id', 'Id paramater is required and must be numeric.').notEmpty().isInt();
+		const errors = req.validationErrors();
+		if (errors) {
+			failure(res, next, 400, errors[0]);
+		}
 		if (typeof(users[req.params.id]) === 'undefined') {
 			failure(res, next, 404, 'User not found')
 		}
