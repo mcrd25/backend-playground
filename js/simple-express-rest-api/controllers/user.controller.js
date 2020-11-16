@@ -10,6 +10,9 @@ const userController = (server) => {
 	});
 
 	server.get('/user/:id', (req, res, next) => {
+		if (typeof(users[req.param.id]) === 'undefined') {
+			failure(res, next, 404, 'User not found')
+		}
 		success(res, next, users[parseInt(req.params.id)])
 	});
 
