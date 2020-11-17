@@ -30,6 +30,13 @@ const userController = (server) => {
 	});
 
 	server.post('/user', (req, res, next) => {
+		req.assert('firstName', 'firstName paramater is required.').notEmpty();
+		req.assert('lastName', 'lastName paramater is required.').notEmpty();
+		req.assert('email', 'email paramater is required and must be a valid email address.').notEmpty().isEmail();
+		const errors = req.validationErrors();
+		if (errors) {
+			failure(res, next, 400, errors[0]);
+		}
 		let user = req.params;
 		max_user_id++;
 		user.id = max_user_id;
