@@ -1,0 +1,34 @@
+{
+  "name": "simple-express-rest-api",
+  "version": "1.0.0",
+  "description": "Basic restful api build with nodejs/express and mongodb as database backend",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon bin/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcrd25/backend-playground.git"
+  },
+  "keywords": [
+    "npm",
+    "nodejs",
+    "express",
+    "rest",
+    "api",
+    "mongodb"
+  ],
+  "author": "mcrd25",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcrd25/backend-playground/issues"
+  },
+  "homepage": "https://github.com/mcrd25/backend-playground#readme",
+  "dependencies": {
+    "nodemon": "^2.0.6",
+    "restify": "^8.5.1",
+    "restify-validator": "^0.3.1"
+  }
+}
